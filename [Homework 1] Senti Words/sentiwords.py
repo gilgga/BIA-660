@@ -10,7 +10,6 @@ Accepts a list of reviews and a Lexicon of positive words
 and returns the word that appears most frequently right after a positive word. 
 """
 
-import sys
 
 #function that loads a lexicon of positive words to a set and returns the set
 def loadLexicon(fname):
@@ -68,10 +67,7 @@ def run( reviews_file, positive_words_file  ):
 
 
 if __name__ == "__main__": 
-    if ( len(sys.argv) != 3 ):
-        print("Usage: sentiwords.py [path to text file] [path to file with positive words] ")
-        sys.exit(1)
-    most_frequent_word = run(sys.argv[1], sys.argv[2])
+    most_frequent_word = run('textfile2', 'positive-words.txt')
     print(most_frequent_word)
        
 
