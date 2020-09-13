@@ -25,9 +25,9 @@ def findNextWord():
     for line in fin:
         line=line.lower().strip()
         words=line.split(' ')
-        for word in words:
+        for i,word in enumerate(words): 
             if word in positive_words:
-                nextWord = words[words.index(word) + 1]
+                nextWord = words[i + 1]
                 if nextWord in d.keys():
                     d[nextWord]+=1
                 else:
