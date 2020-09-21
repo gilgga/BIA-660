@@ -115,9 +115,17 @@ def run( link1, link2, link3 ):
     # *** Apply the 3 criteria
     for word in link2_textfreq.keys():
         # print(word)
-        if word in link3_textfreq.keys() and word in link1_textfreq.keys():
-            if ( (link3_textfreq[word] > link2_textfreq[word]) and (link2_textfreq[word] > link1_textfreq[word]) ):
-               output.add(word)
+        # Check if word exists in Link 3 and that the word appears more frequently in Link 3 than in Link 2
+        if ( (word in link3_textfreq.keys()) and (link3_textfreq[word] > link2_textfreq[word]) ):
+            # Check if the word exists in Link 1
+            #   If yes, then check that the word appears more frquently in Link 2 than in Link 1
+            #   If no, then automatically add to output (because any appearance of a word in Link 2 is > 0)
+            if ( word in link1_textfreq.keys() ):
+                if ( link2_textfreq[word] > link1_textfreq[word] ):   # Check that the word appears more frquently in Link 2 than in Link 1
+                    output.add(word)
+            else:
+                output.add(word)
+
 
 
     # *** Return the set of words that match the criteria
