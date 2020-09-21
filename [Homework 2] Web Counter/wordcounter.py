@@ -61,7 +61,7 @@ def run(url1, url2, url3):
         if word=='' or word in stopLex:continue # ignore empty words and stopwords 
         else: freq3[word]=freq3.get(word,0)+1 # update the frequency of the word 
     
-    for word in freq.keys():  #add to output set if word meets all three criteria, ignore KeyError
+    for word in freq2.keys():  #add to output set if word meets all three criteria, ignore KeyError
         try:
             if (freq3[word] > freq2[word]) and (freq2[word] > freq[word]) and (freq2[word] > 0):
                wordoutput.append(word)
