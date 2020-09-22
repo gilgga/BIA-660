@@ -143,3 +143,9 @@ print(run
 'https://gist.githubusercontent.com/rashmiswaroop10/7ffe171e93071cab8aad9c338c24aea1/raw/74ac846d5c0a8f2b287578ce7862bf006ac05387/text3.txt',
 'https://gist.githubusercontent.com/rashmiswaroop10/8086af919f6da231bd458edc6f7ef749/raw/02b7eddfbf778252c613ab50b50258af3bda7554/text2.txt'
 ))
+print(run
+('https://gist.githubusercontent.com/gilgga/193db382232aaeb7763242d39cbc5d72/raw/1aa1457105dd0222bd8cb38f7b980a53bfbe900b/webcounter_testlink1.txt',
+'https://gist.githubusercontent.com/gilgga/193db382232aaeb7763242d39cbc5d72/raw/1aa1457105dd0222bd8cb38f7b980a53bfbe900b/webcounter_testlink2.txt',
+'https://gist.githubusercontent.com/gilgga/193db382232aaeb7763242d39cbc5d72/raw/1aa1457105dd0222bd8cb38f7b980a53bfbe900b/webcounter_testlink3.txt'
+)
+)
