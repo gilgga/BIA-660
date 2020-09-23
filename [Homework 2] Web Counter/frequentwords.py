@@ -11,12 +11,12 @@ import requests
 
 
 def getUrl(url):
-     response=requests.get(url,headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36' })    
+     response=requests.get(url,headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36' })
      if response:
-         response=response.text 
+         response=response.text
      else: print ('failed attempt')
      return response
- 
+
 
 def ProcessData(url):
     freq = {}
@@ -24,11 +24,11 @@ def ProcessData(url):
     urlText = getUrl(url)
     text=re.sub('[^a-z]',' ',urlText.lower())
     words=text.split(' ')
-    for word in words: 
-            if word=='' or word in stopLex:continue  
+    for word in words:
+            if word=='' or word in stopLex:continue
             else: freq[word]=freq.get(word,0)+1
     return freq
-    
+
 
 def fetchWords(url1, url2, url3):
     result = []
@@ -39,13 +39,19 @@ def fetchWords(url1, url2, url3):
         print(word)
         if word in urlText3.keys() and word in urlText1.keys():
             if (urlText3[word] > urlText2[word] and (urlText2[word] > urlText1[word])):
-               result.append(word)        
+               result.append(word)
     return set(result)
-    
+
 
 print(fetchWords
 ('https://gist.githubusercontent.com/rashmiswaroop10/012403550d28849cea886378801aaa45/raw/9e068f4fadf26aa7c9791ca6ae20cacfb90b6904/text1.txt',
 'https://gist.githubusercontent.com/rashmiswaroop10/7ffe171e93071cab8aad9c338c24aea1/raw/74ac846d5c0a8f2b287578ce7862bf006ac05387/text3.txt',
 'https://gist.githubusercontent.com/rashmiswaroop10/8086af919f6da231bd458edc6f7ef749/raw/02b7eddfbf778252c613ab50b50258af3bda7554/text2.txt'
 ))
-    
+
+print(fetchWords
+('https://gist.githubusercontent.com/gilgga/193db382232aaeb7763242d39cbc5d72/raw/1aa1457105dd0222bd8cb38f7b980a53bfbe900b/webcounter_testlink1.txt',
+'https://gist.githubusercontent.com/gilgga/193db382232aaeb7763242d39cbc5d72/raw/1aa1457105dd0222bd8cb38f7b980a53bfbe900b/webcounter_testlink2.txt',
+'https://gist.githubusercontent.com/gilgga/193db382232aaeb7763242d39cbc5d72/raw/1aa1457105dd0222bd8cb38f7b980a53bfbe900b/webcounter_testlink3.txt'
+)
+)
