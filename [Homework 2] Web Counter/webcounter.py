@@ -8,7 +8,6 @@
 import re  # Regular Expressions for searching specific patterns
 from nltk.corpus import stopwords  # Popular library for text mining
 import requests  # HTTP Requests
-from operator import itemgetter  # For sorting different types of lists for different criteria
 
 
 """
@@ -35,6 +34,7 @@ def run( link1, link2, link3 ):
 
     # Build a set of english stopwords
     stopLex = set(stopwords.words('english'))
+
 
     # *** Send a request to access the three input links
     # Link 1
@@ -107,9 +107,9 @@ def run( link1, link2, link3 ):
             continue # ignore empty words and stopwords
         else:
             link3_textfreq[word] = link3_textfreq.get(word,0) + 1 # update the frequency of the word
-    print(link1_textfreq)
-    print(link2_textfreq)
-    print(link3_textfreq)
+    # print(link1_textfreq)
+    # print(link2_textfreq)
+    # print(link3_textfreq)
 
 
     # *** Apply the 3 criteria
@@ -125,7 +125,6 @@ def run( link1, link2, link3 ):
                     output.add(word)
             else:
                 output.add(word)
-
 
 
     # *** Return the set of words that match the criteria
