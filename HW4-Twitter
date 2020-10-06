@@ -10,19 +10,23 @@ scrollNum is the number of times we want to scroll to load more tweets.
 """
 
 
-
-def getTweets(url, scrollNum):
+def getTweets(url,url2,scrollNum):
     #open the browser and visit the url
     driver = webdriver.Chrome('./chromedriver')
-    for u in url:
-        driver.get(u)
-        time.sleep(2)        
+    #first tab
+    driver.get(url)
+
+    #second tab
+    driver.execute_script("window.open('about:blank', 'tab2');")
+    driver.switch_to.window("tab2")
+    driver.get(url2)
+      
         
 
     already_seen=set()#keeps track of tweets we have already seen.
 
     #write the tweets to a file
-    fw=open('tweets.txt','w',encoding='utf8')
+    fw=open('tweet.txt','w',encoding='utf8')
     writer=csv.writer(fw,lineterminator='\n')#create a csv writer for this file
     for i in range(scrollNum):
 
@@ -68,6 +72,6 @@ def getTweets(url, scrollNum):
     fw.close()
     print('done')
 
-
-url = ['https://twitter.com/SHAQ','https://twitter.com/KingJames']
-getTweets(url,5)
+url='https://twitter.com/SHAQ'
+url2='https://twitter.com/KingJames'
+getTweets(url,url2,3)
