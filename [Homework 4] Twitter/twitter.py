@@ -240,5 +240,5 @@ def getTweets( link1, link2 ):
 # getTweets('https://twitter.com/taylorswift13', 'https://twitter.com/HillaryClinton')
 # getTweets( 'https://twitter.com/HillaryClinton', 'https://twitter.com/taylorswift13' )
 # getTweets('https://twitter.com/BarackObama', 'https://twitter.com/taylorswift13')
-print( getTweets('https://twitter.com/MichelleObama', 'https://twitter.com/BarackObama') )
-
+# print( getTweets('https://twitter.com/MichelleObama', 'https://twitter.com/BarackObama') )
+print( getTweets('https://twitter.com/MichelleObama', 'https://twitter.com/HillaryClinton'))
