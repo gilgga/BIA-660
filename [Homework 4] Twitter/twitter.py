@@ -234,4 +234,11 @@ def getTweets( link1, link2 ):
     return tweet1_and_tweet2_set
 
 
-getTweets('https://twitter.com/SHAQ', 'https://twitter.com/DwyaneWade')
+# getTweets('https://twitter.com/SHAQ', 'https://twitter.com/DwyaneWade')
+# getTweets('https://twitter.com/selenagomez', 'https://twitter.com/taylorswift13')
+# getTweets('https://twitter.com/SHAQ', 'https://twitter.com/selenagomez')
+# getTweets('https://twitter.com/taylorswift13', 'https://twitter.com/HillaryClinton')
+# getTweets( 'https://twitter.com/HillaryClinton', 'https://twitter.com/taylorswift13' )
+# getTweets('https://twitter.com/BarackObama', 'https://twitter.com/taylorswift13')
+print( getTweets('https://twitter.com/MichelleObama', 'https://twitter.com/BarackObama') )
+
