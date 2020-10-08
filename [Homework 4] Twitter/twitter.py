@@ -1,5 +1,5 @@
 """
-* Name:
+* Name: twitter.py
 * Description: BIA-660-WS Homework 4 - Twitter
 * Authors: Team 8: Gil Austria, Homa Deilamy, Korey Grabowski, Rashmi Swaroop, Victoria Piskarev
 * Pledge: "I pledge my honor that I have abided by the Stevens Honor System"
@@ -37,7 +37,7 @@ def getTweets( link1, link2 ):
     while( link1_tweet_index < 30 ):
 
         # Find all elements that have the value "tweet" for the data-testid attribute
-        tweets=driver.find_elements_by_css_selector('div[data-testid="tweet"]')#
+        tweets = driver.find_elements_by_css_selector('div[data-testid="tweet"]')#
         # print(len(tweets),' tweets found\n')
 
         # Process each tweet
@@ -51,7 +51,8 @@ def getTweets( link1, link2 ):
 
             # Find the Tweet Text
             try:
-                txt = tweet.find_element_by_css_selector("div.css-901oao.r-jwli3a.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0").text
+                txt = tweet.find_element_by_css_selector("div.css-901oao.r-hkyrab.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0").text # CSS from selenium_scraper.py
+                # txt = tweet.find_element_by_css_selector("div.css-901oao.r-jwli3a.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0").text # Alternate CSS
                 txt = txt.replace('\n', ' ')
             except:
                 print ('no text')
@@ -95,8 +96,8 @@ def getTweets( link1, link2 ):
         # Wait for 2 seconds
         time.sleep(2)
 
-    print(link1_tweets_and_commentsCount)
-    print('\n')
+    # print(link1_tweets_and_commentsCount)
+    # print('\n')
 
 
     # *** Get the first 30 Tweets with Like Counts from Link 2
@@ -129,7 +130,8 @@ def getTweets( link1, link2 ):
 
             # Find the Tweet Text
             try:
-                txt = tweet.find_element_by_css_selector("div.css-901oao.r-jwli3a.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0").text
+                txt = tweet.find_element_by_css_selector("div.css-901oao.r-hkyrab.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0").text   # CSS from selenium_scraper.py
+                # txt = tweet.find_element_by_css_selector("div.css-901oao.r-jwli3a.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0").text # Alternate CSS
                 txt = txt.replace('\n', ' ')
             except:
                 print ('no text')
@@ -173,8 +175,8 @@ def getTweets( link1, link2 ):
         # Wait for 2 seconds
         time.sleep(2)
 
-    print(link2_tweets_and_likesCount)
-    print('\n')
+    # print(link2_tweets_and_likesCount)
+    # print('\n')
 
 
     # *** Get post from Link 1 with the Most Comments (Call it tweet1)
@@ -185,8 +187,8 @@ def getTweets( link1, link2 ):
             currentMaxComments = tweet_data['comments']
             tweet1 = tweet_data['tweet']
 
-    print(tweet1)
-    print(currentMaxComments)
+    # print(tweet1)
+    # print(currentMaxComments)
 
     # *** Get post from Link 2 with the Most Likes (Call it tweet2)
     currentMaxLikes = -1
@@ -196,20 +198,20 @@ def getTweets( link1, link2 ):
             currentMaxLikes = tweet_data['likes']
             tweet2 = tweet_data['tweet']
 
-    print(tweet2)
-    print(currentMaxLikes)
+    # print(tweet2)
+    # print(currentMaxLikes)
 
 
     # *** Process and Clean Up Tweet Text
     # Remove all non-alpha characters and lowercase tweet1
     tweet1 = re.sub( '[^a-z]', ' ', tweet1.lower() ) # Replace all non-letter characters with a space; Lowercase all letter characters
     tweet1_words = tweet1.split(' ') # Split to get the words in the text
-    print(tweet1_words)
+    # print(tweet1_words)
 
     # Remove all non-alpha characters and lowercase tweet2
     tweet2 = re.sub( '[^a-z]', ' ', tweet2.lower() ) # Replace all non-letter characters with a space; Lowercase all letter characters
     tweet2_words = tweet2.split(' ') # Split to get the words in the text
-    print(tweet2_words)
+    # print(tweet2_words)
 
 
     # *** Create set of words from Tweet Text
@@ -217,13 +219,13 @@ def getTweets( link1, link2 ):
     tweet1_set = set()
     for word in tweet1_words:
         tweet1_set.add(word)
-    print(tweet1_set)
+    # print(tweet1_set)
 
     # Create set for tweet2
     tweet2_set = set()
     for word in tweet2_words:
         tweet2_set.add(word)
-    print(tweet2_set)
+    # print(tweet2_set)
 
 
     # *** Create the set of words that appear in the text of both tweet1 and tweet2
@@ -240,5 +242,5 @@ def getTweets( link1, link2 ):
 # getTweets('https://twitter.com/taylorswift13', 'https://twitter.com/HillaryClinton')
 # getTweets( 'https://twitter.com/HillaryClinton', 'https://twitter.com/taylorswift13' )
 # getTweets('https://twitter.com/BarackObama', 'https://twitter.com/taylorswift13')
-# print( getTweets('https://twitter.com/MichelleObama', 'https://twitter.com/BarackObama') )
-print( getTweets('https://twitter.com/MichelleObama', 'https://twitter.com/HillaryClinton'))
+print( getTweets('https://twitter.com/MichelleObama', 'https://twitter.com/BarackObama') )
+# print( getTweets('https://twitter.com/MichelleObama', 'https://twitter.com/HillaryClinton'))
