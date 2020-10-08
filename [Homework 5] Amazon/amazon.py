@@ -5,7 +5,11 @@
 * Pledge: "I pledge my honor that I have abided by the Stevens Honor System"
 """
 
-def scrape():
+
+import csv
+
+def scrape( link ):
 
     return
 
+scrape('https://www.amazon.com/Sennheiser-Momentum-Cancelling-Headphones-Functionality/dp/B07VW98ZKG')
