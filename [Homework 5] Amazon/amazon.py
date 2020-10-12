@@ -36,7 +36,7 @@ def scrape( link ):
         US_All_Reviews_Link = US_All_Reviews_Span.find_element_by_link_text('See all reviews')
         US_All_Reviews_Link.click()
     except:
-        try:
+        try:    # Click the "See all Reviews" Link under "Top Reviews from OTher Countries", in case there are only reviews from other countries
             OtherCountries_All_Reviews_Span = driver.find_element_by_css_selector('span[data-hook="cr-widget-DesktopGlobalReviews"]')
             OtherCountries_All_Reviews_Link = OtherCountries_All_Reviews_Span.find_element_by_link_text('See all reviews')
             OtherCountries_All_Reviews_Link.click()
@@ -52,7 +52,7 @@ def scrape( link ):
     # * Click the "Next Page" Link
     # * Repeat until "Next Page" Link is Disabled
     while ( True ):
-        time.sleep(2)
+        time.sleep(3)
 
         # Get all Reviews on This Page
         All_Reviews_OnPage = driver.find_elements_by_css_selector('div[data-hook="review"]')
@@ -85,6 +85,7 @@ def scrape( link ):
             Next_Page_Link = driver.find_element_by_partial_link_text("Next page")
             Next_Page_Link.click()
         except: # Last page of reviews and "Next Page" is no longer a link element
+            print('Last page of reviews reached')
             break
 
 
@@ -92,7 +93,9 @@ def scrape( link ):
     reviews_outputfile.close()
     return
 
-scrape('https://www.amazon.com/Sennheiser-Momentum-Cancelling-Headphones-Functionality/dp/B07VW98ZKG')  # Given Example
+# scrape('https://www.amazon.com/Sennheiser-Momentum-Cancelling-Headphones-Functionality/dp/B07VW98ZKG')  # Given Example
 # scrape('https://www.amazon.com/gp/product/B07ZTRWBDZ/ref=crt_ewc_img_oth_1?ie=UTF8&psc=1&smid=AJD86ZG0LXE8Q')  # Only one page of reviews
 # scrape('https://www.amazon.com/gp/product/B08C2D9FGL/ref=crt_ewc_img_dp_3?ie=UTF8&psc=1&smid=A1JW1XF109MUPH')  # No Reviews
 # scrape('https://www.amazon.com/Google-GA00439-US-Chromecast-3rd-Generation/dp/B015UKRNGS/ref=sr_1_2?dchild=1&keywords=chromecast&qid=1602279362&sr=8-2')    # 3000+ Reviews
+# scrape('https://www.amazon.com/Kempshott-750-Smooth-Paper-Clips/dp/B08CSQ41GX/ref=sr_1_12?dchild=1&keywords=clips&qid=1602360907&sr=8-12')
+# scrape('https://www.amazon.com/Super-Health-Diet-Last-Will-ebook/dp/B004Y0V9G6/ref=cm_cr_arp_d_product_top?ie=UTF8')
