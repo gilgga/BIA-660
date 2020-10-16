@@ -65,8 +65,8 @@ lsvc_pred = lsvc_clf.predict(counts_test)
 print('Linear SVM Classifier Accuracy: ', accuracy_score(lsvc_pred, labels_test))
 
 
-from sklearn.linear_model import LogisticRegression
 # ** Train Logistic Regression Classifier ---------------------------------------------------
+from sklearn.linear_model import LogisticRegression
 lr_clf = LogisticRegression(max_iter=100000)
 
 lr_clf.fit(counts_train, labels_train)
@@ -95,7 +95,7 @@ mlp_pred = mlp_clf.predict(counts_test)
 print('Multilyer Perception Classifier Accuracy: ', accuracy_score(mlp_pred, labels_test))
 
 
-# ** Train K Nearest Neighbors Classifier
+# ** Train K Nearest Neighbors Classifier ---------------------------------------------------
 from sklearn.neighbors import KNeighborsClassifier
 
 k_and_scores = []
@@ -109,3 +109,39 @@ for k in range(1,100):
 
 print('K Nearest Neighbors Classifier Accuracy: ', sorted(k_and_scores, key = lambda x : x[1], reverse=True)[0][1])
 
+
+# ** Train K Means Classifier ---------------------------------------------------
+from sklearn.cluster import KMeans
+
+clusters_and_scores = []
+for clusters in range(1,100):
+    kmeans_clf = KMeans(n_clusters=2, random_state=0, max_iter=10000)
+
+    kmeans_clf.fit(counts_train, labels_train)
+    kmeans_pred = kmeans_clf.predict(counts_test)
+
+    clusters_and_scores.append((clusters, accuracy_score(kmeans_pred, labels_test)))
+
+print('K Means Classifier Accuracy: ', sorted(clusters_and_scores, key = lambda x : x[1], reverse=True)[0][1])
+
+
+# ** Train Linear Discriminant Analysis Classifier ---------------------------------------------------
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+
+lda_clf = LinearDiscriminantAnalysis()
+
+lda_clf.fit(counts_train.toarray(), labels_train)
+lda_pred = lda_clf.predict(counts_test.toarray())
+
+print('Linear Discriminant Analysis Classifier Accuracy: ', accuracy_score(lda_pred, labels_test))
+
+
+# ** Train Linear Regression Classifier ---------------------------------------------------
+from sklearn.linear_model import LinearRegression
+
+linr_clf = LinearRegression()
+
+linr_clf.fit(counts_train, labels_train)
+linr_pred = linr_clf.predict(counts_test)
+
+print('Linear Regression Classifier Accuracy: ', accuracy_score(linr_pred.round(), labels_test))
