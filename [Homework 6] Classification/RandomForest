@@ -35,7 +35,7 @@ counts_test = counter.transform(rev_test)#transform the testing data
 # Random Forest Classifier
 
 
-model = RandomForestClassifier(n_estimators = 100, random_state =24)
+model = RandomForestClassifier(n_estimators = 1000, random_state =0)
 model.fit(counts_train, labels_train)
 y_pred = model.predict(counts_test)
 print (accuracy_score(y_pred,labels_test))
