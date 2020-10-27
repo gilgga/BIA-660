@@ -1,6 +1,6 @@
 """
 * Name: classifier.py
-* Description: BIA-660-WS Homework 7 - Classification
+* Description: BIA-660-WS Homework 7 - Classification II
 * Authors: Team 8: Gil Austria, Homa Deilamy, Korey Grabowski, Rashmi Swaroop, Victoria Piskarev
 * Pledge: "I pledge my honor that I have abided by the Stevens Honor System"
 """
@@ -91,3 +91,4 @@ VT.fit(counts_train,labels_train)
 predicted = VT.predict(counts_test)
 
 print( accuracy_score(predicted,labels_test) )
+# Multiple Runs result in different accuracies as high as 0.87667
