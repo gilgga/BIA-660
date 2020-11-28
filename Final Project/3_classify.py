@@ -13,9 +13,9 @@ from sklearn.metrics import accuracy_score
 
 data = pd.read_csv("job_ads.csv", encoding='UTF-8')
 df= pd.DataFrame(data)
-df.columns =['Text', 'Job Title']
+df.columns =['Text', 'Job_Title']
 
-X_train, X_test, y_train, y_test = train_test_split(df["Text"], df["Job Title"], test_size = 0.5, random_state = 2)
+X_train, X_test, y_train, y_test = train_test_split(df["Text"], df["Job_Title"], test_size = 0.5, random_state = 2)
 
 count_vectorizer = CountVectorizer()
 X_train_counts = count_vectorizer.fit_transform(X_train)
@@ -34,7 +34,3 @@ predicted = nb_bern_model.predict(X_test_counts)
 
 # print the accuracies
 print("Model Accuracy:", accuracy_score(y_test, predicted))
-
-# ! Should our classify script take in as input the test data that you will provide?
-#   For example, should our script train on the entirety of the data we scraped and parsed,
-#   and then run the model on your test data, and then output the accuracy?

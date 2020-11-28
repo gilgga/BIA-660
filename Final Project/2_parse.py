@@ -16,7 +16,6 @@ import codecs
 from progressbar import ProgressBar
 
 
-base_dir = 'Team 8 - Final Project Job Ad Raw HTML'
 data_scientist_dir = 'Data Scientist'
 software_engineer_dir = 'Software Engineer'
 data_engineer_dir = 'Data Engineer'
@@ -24,15 +23,14 @@ data_engineer_dir = 'Data Engineer'
 jobAd_dirs = [ data_scientist_dir, software_engineer_dir, data_engineer_dir ]
 
 csv_output = 'job_ads.csv'
-headers = ['Text', 'Job Title']
+headers = ['Text', 'Job_Title']
 
 
 # *** Words to drop from every Job Ad
-drop_words = [ 'data scientist', 'software engineer', 'data engineer' ]
 stop_words = set(stopwords.words('english'))
 
 
-# *** Remove non-letter characters, lowercase, remove stop words, and remove drop words
+# *** Remove non-letter characters, lowercase, remove stop words, and remove key words
 def cleanData( text ):
     text = text.replace("\\n", " ").replace(",", " ").replace(".", " ")
     text = re.sub( '[^a-z]', ' ', text.lower() )
@@ -46,8 +44,9 @@ def cleanData( text ):
 
     cleaned_text_join = ' '.join(cleaned_text)
 
-    for word in drop_words:
-        cleaned_text_join = cleaned_text_join.replace(word, "")
+    cleaned_text_join = re.sub('data sci[a-z]+', ' ', cleaned_text_join)
+    cleaned_text_join = re.sub('data eng[a-z]+', ' ', cleaned_text_join)
+    cleaned_text_join = re.sub('software eng[a-z]+', ' ', cleaned_text_join)
 
     return cleaned_text_join
 
@@ -60,7 +59,6 @@ def parse():
     writer.writerow(headers)
 
     # *** For loop that goes into every directory with job Ads and parses them using Beautiful Soup
-    os.chdir(base_dir)
     for directory in jobAd_dirs:
         pbar = ProgressBar()
         os.chdir(directory)

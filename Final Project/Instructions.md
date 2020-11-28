@@ -29,11 +29,11 @@ You must also place these folders in the same directory as the 2_parse.py script
 
 Using the RAW HTML Job Data from all three folders, a csv file called job_ads.csv will be produced that has two colums:
 Text
-Job Title
+Job_Title
 
-Each Job Ad has one line with one entry for Text and Job Title.
+Each Job Ad has one line with one entry for Text and Job_Title.
 "Text" column has the processed/cleaned job data.  This data has all HTML tags and symbols removed, stop words removed, all extraneous whitespace/new-line characters and non-letter chracters removed, and the jobs titles of "data scientist", "software engineer", and "data engineer" removed.
-"Job Title" has the job title associated with the job data.  This is taken from the folder name.
+"Job_Title" has the job title associated with the job data.  This is taken from the folder name.
 
 
 3_classify.py takes the job_ads.csv data and run its through a classifier.
