@@ -11,16 +11,9 @@ import os
 import re
 import sys
 
-# 15000 HTML files for each Job Ad
-# Will have full HTML for each Job Description (can just be the single div doesnt have to have full HTML skeleton)
-
-
-# ***
-# HTML_dir = 'Team 8 - Final Project Job Ad Raw HTML'
-
 # *** Dictionary with Job Title and City+State Pairs for each Job
 job_city_state_dict = {
-    'data-scientist': {
+    'data+scientist': {
         'city_state_pair': [('San+Jose', 'CA'), ('Bronx', 'NY'), ('Brooklyn', 'NY'), ('Indianapolis', 'IN'), ('Short Hills', 'NJ'), ('Las+Vegas', 'NV'), ('Arlington', 'VA'), ('Nashville', 'TN'), ('Englewood+Cliffs', 'NJ')]
     },
     'software+engineer': {
