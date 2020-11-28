@@ -16,6 +16,7 @@ If there are no runtime errors, this script will ideally output three folders:
 1. data+scientist
 2. software+engineer
 3. data+engineer
+
 *These folders should also not yet exist before running this script or os.mkdir will throw an error*
 
 *Each folder will contain 5000+ HTML files for the respective job from all the different queried cities.*
